@@ -12,5 +12,17 @@
     <div id= "horloge">
     </div>
 
+    <div id= "minuteur">
+        <form action="" method="post">
+            <div id = "numbersTimer">
+                <input id="hours" name="hours" value = "00" type="number" /> 
+                <p>:</p> 
+                <input id="minutes" name="minutes" value = "00" type="number" /> 
+                <p>:</p> 
+                <input id="seconds" name="seconds" value = "00" type="number" />  
+            </div>
+            <button id = "buttonMinuteur" type="submit" name="submitMinuteur">ok</button>
+        </form>
+    </div>
 </body>
 </html>
