@@ -21,7 +21,7 @@
                 <p>:</p> 
                 <input id="seconds" name="seconds" value = "00" type="number" />  
             </div>
-            <button id = "buttonMinuteur" type="submit" name="submitMinuteur">ok</button>
+            <button id = "buttonMinuteur" type="submit" name="submitMinuteur" data-switch = "on">ok</button>
         </form>
     </div>
 </body>

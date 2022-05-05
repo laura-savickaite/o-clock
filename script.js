@@ -40,6 +40,16 @@ document.addEventListener('DOMContentLoaded', function loaded() {
 
 
 
+
+
+
+
+
+
+
+
+
+
 /////////////////////////////
 
          // MINUTEUR
@@ -69,7 +79,6 @@ document.addEventListener('DOMContentLoaded', function loaded() {
 
 
 
-
     function minuteur () {
 
         heureInput.addEventListener("keyup", function(){
@@ -84,77 +93,126 @@ document.addEventListener('DOMContentLoaded', function loaded() {
             checkInputNb(secondsInput);
         })
 
+    }
+
         let button = document.getElementById('buttonMinuteur');
 
+        
+        //lorsque je clique sur le bouton
+
+
+        // var counter = 0
+
+        // if(counter % 2){
+        //     button.dataset.switch = 'on';
+        //     console.log(button.dataset.switch)
+        // }
+        // else
+        // {
+        //     button.dataset.switch = '';
+        //     console.log(button.dataset.switch)
+        // }
+
+        var timesUp
+        var timeBis 
 
         button.addEventListener('click', function(event){
             event.preventDefault();
 
-            numbersDiv.innerHTML = "";
 
-            let heureValue = parseInt(heureInput.value);
-            let minValue = parseInt(minuteInput.value);
-            let secValue = parseInt(secondsInput.value);
+            if(button.dataset.switch == "on"){
 
-            minValue = minValue * 60;
-            heureValue = heureValue * 3600;
-
-            // console.log(secValue)
-            // console.log(minValue)
-            // console.log(heureValue)
-
-            var time = parseInt(heureValue + minValue + secValue);
-
-            function timer() {    
-                let hours = parseInt(time / 3600, 10)
-
-                let minutes = parseInt(time % 3600 / 60, 10)
-                // console.log(minutes);
-                let seconds = parseInt(time % 3600 % 60, 10)
-                // console.log(seconds);
-
-                numbersDiv.innerText = hours + ":" + minutes + ":" + seconds
-
-                if(time == 0){
-                    clearInterval(test)
-                    var timesUp = new Audio('sounds/alarm.wav');
-                    timesUp.play();
+                if (timeBis !== undefined){
+                    var time = timeBis
                 }
                 else 
                 {
-                  time--   
+                    var heureValue = parseInt(heureInput.value);
+                    var minValue = parseInt(minuteInput.value);
+                    var secValue = parseInt(secondsInput.value);
+        
+                    minValue = minValue * 60;
+                    heureValue = heureValue * 3600;
+        
+                    
+                    var time = parseInt(heureValue + minValue + secValue);                     
                 }
-              }
+
+
+                delete button.dataset.switch
+
+                timesUp = setInterval(timer, 1000);
+            }
+            else 
+            {
+
+                clearInterval(timesUp)
+                
+                var newTime = numbersDiv.innerHTML
+
+                newTime = newTime.split(':')
+                // test[1] = test[1] * 60
+                // test[0] = test[0] * 3600
+
+                var h = parseInt(newTime[0])
+                var m = parseInt(newTime[1])
+                var s = parseInt(newTime[2])
+
+                m = m * 60;
+                h = h * 3600;
+
+
+                timeBis = parseInt(h + m + s); 
+
+                button.dataset.switch = "on"
+            }
+
+
+            function timer() 
+            {      
+
+                var hours = parseInt(time / 3600, 10)
+                // console.log(hours);
+                var minutes = parseInt(time % 3600 / 60, 10)
+                // console.log(minutes);
+                var seconds = parseInt(time % 3600 % 60, 10)
+                // console.log(seconds);
+                
+                //à transformer en f(x) pck je la réutilise svt
+                hours = (hours < 10) ? '0' + hours : hours;
+                minutes = (minutes < 10) ? '0' + minutes : minutes;
+                seconds = (seconds < 10) ? '0' + seconds : seconds;   
+
+                let days = Math.floor(hours / 24)
+
+                if (days >= 1) {
+                    let daysTimer = document.createElement('div')
+                    daysTimer.classList.add('daysTimer')
+                    daysTimer.innerText = '+ ' + days + ' day(s)'
+                    numbersDiv.appendChild(daysTimer)
+                } 
+
+                if(time == 0){
+                    clearInterval(timesUp)
+                    let timesUpSound = new Audio('sounds/alarm.wav');
+                    timesUpSound.play();
+                }
+                else 
+                {
+                time--   
+                }
+
+                numbersDiv.innerHTML = "";  
+                numbersDiv.innerText = hours + ":" + minutes + ":" + seconds
+            }
 
             //méthode js qui permet d'exécuter le code à intervalle (toutes les secondes je vais lancer cette fx), ne pas confondre avec settimeout qui LANCE la fx après un laps de temps
-
-                var test = setInterval(timer, 1000);
-
-
-
-
-
-            //à transformer en f(x) pck je la réutilise svt
-            // heureValue = (heureValue < 10) ? '0' + heureValue : heureValue;
-            // minValue = (minValue < 10) ? '0' + minValue : minValue;
-            // secValue = (secValue < 10) ? '0' + secValue : secValue;
-
-            // let minuteur = parseInt(heureValue) + ':' + parseInt(minValue) + ':' + parseInt(secValue);
-
-            // minuteur --;
-
-            // console.log(parseInt(heureValue));
-            // console.log(parseInt(minValue));
-            // console.log(parseInt(secValue));
-
-            // setTimeout(timer(secValue), 1000)
-
-            // console.log (numbersDiv)
-            // console.log(minuteur)
-        })
-
-        
-    }
-
+            
+  
+        }) 
+    
     minuteur();
+
+
+
 })
