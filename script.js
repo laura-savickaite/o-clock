@@ -97,22 +97,6 @@ document.addEventListener('DOMContentLoaded', function loaded() {
 
         let button = document.getElementById('buttonMinuteur');
 
-        
-        //lorsque je clique sur le bouton
-
-
-        // var counter = 0
-
-        // if(counter % 2){
-        //     button.dataset.switch = 'on';
-        //     console.log(button.dataset.switch)
-        // }
-        // else
-        // {
-        //     button.dataset.switch = '';
-        //     console.log(button.dataset.switch)
-        // }
-
         var timesUp
         var timeBis 
 
@@ -141,6 +125,7 @@ document.addEventListener('DOMContentLoaded', function loaded() {
 
                 delete button.dataset.switch
 
+                //méthode js qui permet d'exécuter le code à intervalle (toutes les secondes je vais lancer cette fx), ne pas confondre avec settimeout qui LANCE la fx après un laps de temps
                 timesUp = setInterval(timer, 1000);
             }
             else 
@@ -151,8 +136,6 @@ document.addEventListener('DOMContentLoaded', function loaded() {
                 var newTime = numbersDiv.innerHTML
 
                 newTime = newTime.split(':')
-                // test[1] = test[1] * 60
-                // test[0] = test[0] * 3600
 
                 var h = parseInt(newTime[0])
                 var m = parseInt(newTime[1])
@@ -172,11 +155,8 @@ document.addEventListener('DOMContentLoaded', function loaded() {
             {      
 
                 var hours = parseInt(time / 3600, 10)
-                // console.log(hours);
                 var minutes = parseInt(time % 3600 / 60, 10)
-                // console.log(minutes);
                 var seconds = parseInt(time % 3600 % 60, 10)
-                // console.log(seconds);
                 
                 //à transformer en f(x) pck je la réutilise svt
                 hours = (hours < 10) ? '0' + hours : hours;
@@ -205,14 +185,83 @@ document.addEventListener('DOMContentLoaded', function loaded() {
                 numbersDiv.innerHTML = "";  
                 numbersDiv.innerText = hours + ":" + minutes + ":" + seconds
             }
-
-            //méthode js qui permet d'exécuter le code à intervalle (toutes les secondes je vais lancer cette fx), ne pas confondre avec settimeout qui LANCE la fx après un laps de temps
-            
-  
         }) 
     
     minuteur();
 
+
+
+
+
+
+
+
+
+
+
+
+
+/////////////////////////////////
+
+         // CHRONOMETRE
+
+/////////////////////////////////
+
+
+let chronometre = document.getElementById('chrono');
+let buttonChrono = document.getElementById('buttonChrono');
+let timeChrono = document.getElementsByTagName('time');
+
+
+
+buttonChrono.addEventListener('click', function(event){
+    event.preventDefault();
+
+
+    if(button.dataset.switch == "on"){
+        console.log('on')
+        delete button.dataset.switch
+    }
+    else 
+    {
+        console.log('off')
+        button.dataset.switch = "on"
+    }
+
+   timeChrono[0].innerHTML = '';
+
+
+   let secondsChrono = 0;
+   let minutesChrono = 0;
+   let hoursChrono = 0;
+
+   minutesChrono = minutesChrono * 60;
+   hoursChrono = hoursChrono * 3600;
+
+   let timePlus = secondsChrono + minutesChrono + hoursChrono;
+
+   function chronometer(){
+
+    timePlus++;  
+    
+    hoursChrono = parseInt(timePlus / 3600, 10)
+    minutesChrono = parseInt(timePlus % 3600 / 60, 10)
+    secondsChrono = parseInt(timePlus % 3600 % 60, 10)
+
+    hoursChrono = (hoursChrono < 10) ? '0' + hoursChrono : hoursChrono;
+    minutesChrono = (minutesChrono < 10) ? '0' + minutesChrono : minutesChrono;
+    secondsChrono = (secondsChrono < 10) ? '0' + secondsChrono : secondsChrono``;   
+
+    // console.log(hoursChrono)
+    // console.log(minutesChrono)
+    // console.log(secondsChrono)
+
+    timeChrono[0].innerHTML = hoursChrono + ':' + minutesChrono + ':' + secondsChrono;
+  }
+
+   let timesRunning = setInterval(chronometer, 1000);
+    
+})
 
 
 })

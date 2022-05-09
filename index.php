@@ -24,5 +24,12 @@
             <button id = "buttonMinuteur" type="submit" name="submitMinuteur" data-switch = "on">ok</button>
         </form>
     </div>
+
+
+    <div id= "chrono">
+        <time>00:00:00</time>
+        <button id = "buttonChrono" data-switch = "on">go</button>
+        <button id = "resetChrono">reset</button>
+    </div>
 </body>
 </html>
