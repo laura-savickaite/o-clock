@@ -212,33 +212,57 @@ let chronometre = document.getElementById('chrono');
 let buttonChrono = document.getElementById('buttonChrono');
 let timeChrono = document.getElementsByTagName('time');
 
+var timesRunning;
+var timePaused;
+
 
 
 buttonChrono.addEventListener('click', function(event){
     event.preventDefault();
 
-
     if(button.dataset.switch == "on"){
+
+        if(timePaused !== undefined)
+        {
+            var timePlus = timePaused;
+        }
+        else
+        {
+            var secondsChrono = 0;
+            var minutesChrono = 0;
+            var hoursChrono = 0;
+         
+            minutesChrono = minutesChrono * 60;
+            hoursChrono = hoursChrono * 3600;
+         
+            var timePlus = secondsChrono + minutesChrono + hoursChrono;
+        }
+
         console.log('on')
+        timesRunning = setInterval(chronometer, 1000);
         delete button.dataset.switch
     }
     else 
     {
         console.log('off')
+        clearInterval(timesRunning)
+        
+        let timePause = timeChrono[0].innerHTML;
+        timePause = timePause.split(':');
+
+        var newHour = timePause[0];
+        var newMinute = timePause[1];
+        var newSecond = timePause[2];
+
+        newMinute = newMinute * 60;
+        newHour = newHour * 3600;
+
+        timePaused = parseInt(newHour + newMinute + newSecond);
+        
         button.dataset.switch = "on"
     }
 
-   timeChrono[0].innerHTML = '';
 
-
-   let secondsChrono = 0;
-   let minutesChrono = 0;
-   let hoursChrono = 0;
-
-   minutesChrono = minutesChrono * 60;
-   hoursChrono = hoursChrono * 3600;
-
-   let timePlus = secondsChrono + minutesChrono + hoursChrono;
 
    function chronometer(){
 
@@ -250,16 +274,10 @@ buttonChrono.addEventListener('click', function(event){
 
     hoursChrono = (hoursChrono < 10) ? '0' + hoursChrono : hoursChrono;
     minutesChrono = (minutesChrono < 10) ? '0' + minutesChrono : minutesChrono;
-    secondsChrono = (secondsChrono < 10) ? '0' + secondsChrono : secondsChrono``;   
-
-    // console.log(hoursChrono)
-    // console.log(minutesChrono)
-    // console.log(secondsChrono)
+    secondsChrono = (secondsChrono < 10) ? '0' + secondsChrono : secondsChrono;   
 
     timeChrono[0].innerHTML = hoursChrono + ':' + minutesChrono + ':' + secondsChrono;
   }
-
-   let timesRunning = setInterval(chronometer, 1000);
     
 })
 
