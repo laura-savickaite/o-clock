@@ -30,6 +30,7 @@
         <time>00:00:00</time>
         <button id = "buttonChrono" data-switch = "on">go</button>
         <button id = "resetChrono">reset</button>
+        <button id = "tourChrono">tour</button>
     </div>
 </body>
 </html>
