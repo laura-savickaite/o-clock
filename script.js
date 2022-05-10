@@ -211,9 +211,11 @@ document.addEventListener('DOMContentLoaded', function loaded() {
 let chronometre = document.getElementById('chrono');
 let buttonChrono = document.getElementById('buttonChrono');
 let timeChrono = document.getElementsByTagName('time');
+let buttonReset = document.getElementById('resetChrono');
 
 var timesRunning;
 var timePaused;
+
 
 
 
@@ -238,13 +240,11 @@ buttonChrono.addEventListener('click', function(event){
             var timePlus = secondsChrono + minutesChrono + hoursChrono;
         }
 
-        console.log('on')
         timesRunning = setInterval(chronometer, 1000);
         delete button.dataset.switch
     }
     else 
     {
-        console.log('off')
         clearInterval(timesRunning)
         
         let timePause = timeChrono[0].innerHTML;
@@ -262,7 +262,17 @@ buttonChrono.addEventListener('click', function(event){
         button.dataset.switch = "on"
     }
 
+    buttonReset.addEventListener('click', function(event){
+        event.preventDefault();
+    
+        clearInterval(timesRunning);
 
+        timeChrono[0].innerHTML = '00:00:00' 
+        timePlus = 0;
+        timePaused = 0;
+        
+        button.dataset.switch = "on"
+    })
 
    function chronometer(){
 
@@ -280,6 +290,7 @@ buttonChrono.addEventListener('click', function(event){
   }
     
 })
+
 
 
 })
