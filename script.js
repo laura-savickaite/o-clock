@@ -213,10 +213,13 @@ let buttonChrono = document.getElementById('buttonChrono');
 let timeChrono = document.getElementsByTagName('time');
 let buttonReset = document.getElementById('resetChrono');
 let buttonTour = document.getElementById('tourChrono');
+var listTours = document.createElement('ul')
+chronometre.appendChild(listTours)
 
 var timesRunning;
 var timePaused;
 var addTours;
+var timePlus;
 
 
 buttonChrono.addEventListener('click', function(event){
@@ -263,42 +266,6 @@ buttonChrono.addEventListener('click', function(event){
     }
 
 
-    buttonTour.addEventListener('click', function(event){
-        event.preventDefault();
-
-        var hours = parseInt(timePlus / 3600, 10)
-        var minutes = parseInt(timePlus % 3600 / 60, 10)
-        var seconds = parseInt(timePlus % 3600 % 60, 10)
-
-        hours = (hours < 10) ? '0' + hours : hours;
-        minutes = (minutes < 10) ? '0' + minutes : minutes;
-        seconds = (seconds < 10) ? '0' + seconds : seconds;       
-
-
-        addTours = document.createElement('div')
-        addTours.classList.add('tours')
-        addTours.innerText = hours + ":" + minutes + ":" + seconds;
-        chronometre.appendChild(addTours)
-
-    })
-
-
-    buttonReset.addEventListener('click', function(event){
-        event.preventDefault();
-    
-        clearInterval(timesRunning);
-
-        timeChrono[0].innerHTML = '00:00:00'; 
-        timePlus = 0;
-        timePaused = 0;
-
-        addTours.innerText = '';
-        chronometre.removeChild(addTours)
-        
-        button.dataset.switch = "on";
-    })
-
-
    function chronometer(){
 
     timePlus++;  
@@ -314,6 +281,35 @@ buttonChrono.addEventListener('click', function(event){
     timeChrono[0].innerHTML = hoursChrono + ':' + minutesChrono + ':' + secondsChrono;
   }
     
+})
+
+
+buttonTour.addEventListener('click', function tour(event){
+    event.preventDefault();
+
+    addTours = document.createElement('li')
+    // addTours.classList.add('tours')
+    addTours.innerText = timeChrono[0].innerHTML;
+    listTours.appendChild(addTours)
+
+})
+
+
+buttonReset.addEventListener('click', function reset(event){
+    event.preventDefault();
+
+    clearInterval(timesRunning);
+
+    timeChrono[0].innerHTML = '00:00:00'; 
+    timePlus = 0;
+    timePaused = 0;
+
+    listTours.innerHTML = '';
+    // chronometre.removeChild(listTours)
+
+    buttonTour.removeEventListener('click', tour())
+    
+    button.dataset.switch = "on";
 })
 
 
