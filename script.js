@@ -314,4 +314,21 @@ buttonReset.addEventListener('click', function reset(event){
 
 
 
+
+
+
+
+
+
+
+
+
+/////////////////////////////////
+
+         // REVEIL
+
+/////////////////////////////////
+
+
+
 })

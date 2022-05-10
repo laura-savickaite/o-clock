@@ -32,5 +32,14 @@
         <button id = "resetChrono">reset</button>
         <button id = "tourChrono">tour</button>
     </div>
+
+
+    <div id= "reveil">
+        <input id="hourReveil" name="hourReveil" value = "00" type="number" /> 
+        <p>:</p> 
+        <input id="minuteReveil" name="minuteReveil" value = "00" type="number" /> 
+        <textarea id="nameReveil" name="nameReveil" rows="5" cols="33"></textarea>
+        <button id = "buttonReveil">submit</button>
+    </div>
 </body>
 </html>
