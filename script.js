@@ -329,6 +329,35 @@ buttonReset.addEventListener('click', function reset(event){
 
 /////////////////////////////////
 
+let selectHour = document.getElementById("hourSelect");
+let selectMinutes = document.getElementById("minutesSelect");
+let buttonSubmit = document.getElementById("buttonReveil");
+
+for(var i = 0; i<= 23; i++)
+{
+    var optionHour = document.createElement('option');
+    optionHour.value = i;
+    optionHour.innerHTML = i;
+    selectHour.appendChild(optionHour);
+}
+
+for(var j = 0; j<= 59; j++)
+{
+    var optionMinutes = document.createElement('option');
+    optionMinutes.value = j;
+    optionMinutes.innerHTML = j;
+    selectMinutes.appendChild(optionMinutes);
+}
+
+buttonSubmit.addEventListener('click', function submitReveil(event){
+    event.preventDefault();
+
+    var valueHour = selectHour.options[selectHour.selectedIndex].value;
+    console.log(valueHour);
+
+    var valueMinutes = selectMinutes.options[selectMinutes.selectedIndex].value;
+    console.log(valueMinutes);
+})
 
 
 })

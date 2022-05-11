@@ -35,9 +35,10 @@
 
 
     <div id= "reveil">
-        <input id="hourReveil" name="hourReveil" value = "00" type="number" /> 
+        <select name="hourSelect" id="hourSelect"></select>
         <p>:</p> 
-        <input id="minuteReveil" name="minuteReveil" value = "00" type="number" /> 
+        <select name="minutesSelect" id="minutesSelect"></select>
+        <br>
         <textarea id="nameReveil" name="nameReveil" rows="5" cols="33"></textarea>
         <button id = "buttonReveil">submit</button>
     </div>
