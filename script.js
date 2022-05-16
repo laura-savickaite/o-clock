@@ -323,6 +323,7 @@ buttonReset.addEventListener('click', function reset(event){
 
 
 
+
 /////////////////////////////////
 
          // REVEIL
@@ -332,9 +333,16 @@ buttonReset.addEventListener('click', function reset(event){
 let selectHour = document.getElementById("hourSelect");
 let selectMinutes = document.getElementById("minutesSelect");
 let buttonSubmit = document.getElementById("buttonReveil");
+let textarea = document.getElementById("nameReveil");
+let tocome = document.getElementById("tocome");
+let passed = document.getElementById("passed");
+
+//pour les sélections d'heure/minutes
 
 for(var i = 0; i<= 23; i++)
 {
+    i = (i < 10) ? '0' + i : i;
+
     var optionHour = document.createElement('option');
     optionHour.value = i;
     optionHour.innerHTML = i;
@@ -343,21 +351,85 @@ for(var i = 0; i<= 23; i++)
 
 for(var j = 0; j<= 59; j++)
 {
+    j = (j < 10) ? '0' + j : j;
+
     var optionMinutes = document.createElement('option');
     optionMinutes.value = j;
     optionMinutes.innerHTML = j;
     selectMinutes.appendChild(optionMinutes);
 }
 
-buttonSubmit.addEventListener('click', function submitReveil(event){
+
+
+var valueAlarm;
+var valueText;
+var value;
+var alarms = [];
+
+buttonSubmit.addEventListener('click', function submitReveil(event)
+{
     event.preventDefault();
 
+    //récupération des données
+
     var valueHour = selectHour.options[selectHour.selectedIndex].value;
-    console.log(valueHour);
+    valueHour = parseInt(valueHour);
+    valueHour = (valueHour < 10) ? '0' + valueHour : valueHour;
 
     var valueMinutes = selectMinutes.options[selectMinutes.selectedIndex].value;
-    console.log(valueMinutes);
+    valueMinutes = parseInt(valueMinutes);
+    valueMinutes = (valueMinutes < 10) ? '0' + valueMinutes : valueMinutes;
+
+    valueText = textarea.value;
+
+    valueAlarm = valueHour + ':' + valueMinutes + ':00';
+
+    value = valueAlarm + ";" + valueText;
+    const alarmArray = alarms.push(value);
+
+    console.log(alarms)
+
+    // tocome.innerText = valueAlarm + ' ' + valueText;
+    // listTours.appendChild(addTours)
+
+    // console.log('ok ' + valueAlarm);
 })
+
+
+clock();
+
+function clock()
+{
+
+    let date = new Date();  
+
+    let heure = date.getHours(); 
+    let minutes = date.getMinutes();
+    let secondes = date.getSeconds();
+
+    heure = (heure < 10) ? '0' + heure : heure;
+    minutes = (minutes < 10) ? '0' + minutes : minutes;
+    secondes = (secondes < 10) ? '0' + secondes : secondes;
+
+    let horlogeReveil = heure + ':' + minutes + ':' + secondes;
+    var horlogeReveilBis = heure + ':' + minutes + ':00';
+
+    // console.log(horlogeReveil)
+
+    alarms.forEach(element => {
+        var alarme = element.split(';');
+        if(horlogeReveil == alarme[0]){
+            alert(alarme[1]);
+        }
+    });
+
+    setTimeout(function(){ clock() }, 1000);
+}
+
+// clock();
+
+// console.log(horlogeReveil)
+// console.log(valueAlarm);
 
 
 })

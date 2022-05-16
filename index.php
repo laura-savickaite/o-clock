@@ -41,6 +41,8 @@
         <br>
         <textarea id="nameReveil" name="nameReveil" rows="5" cols="33"></textarea>
         <button id = "buttonReveil">submit</button>
+        <div id="tocome"></div>
+        <div id="passed"></div>
     </div>
 </body>
 </html>
