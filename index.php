@@ -50,4 +50,8 @@
 <div id="border"></div>
 
 <footer>
-    <a href="https://github.com/laura-savickaite/o-clock"><img src="image
+    <a href="https://github.com/laura-savickaite/o-clock"><img src="images/github.png" width="50px"></a>
+</footer>
+
+</body>
+</html>
