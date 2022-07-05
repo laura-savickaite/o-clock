@@ -22,6 +22,11 @@
     src: url(fonts/PPEiko-Heavy\ copie.otf);
 }
 
+@font-face {
+    font-family: clock;
+    src: url(fonts/Technology.ttf);
+}
+
 
 /* ------------------------------------------------
                     RESET
@@ -60,6 +65,9 @@ html {
 body {
     line-height: 1.5;
     min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
 
 /* Make images easier to work with (si dieu le veut) */
@@ -210,3 +218,30 @@ footer img {
     padding-top: 20px;
     margin-left: 1300px;
 }
+
+
+
+/* faire le responsive !!!!!!!!!!!!!!!!!! */
+
+
+
+
+/* ------------------------------------------------
+                    HORLOGE
+--------------------------------------------------- */
+
+#horloge {
+    margin: auto;
+    font-family: clock;
+    font-size: 70px;
+}
+
+
+
+
+
+
+
+/* ------------------------------------------------
+                    MINUTEUR
+--------------------------------------------------- */
