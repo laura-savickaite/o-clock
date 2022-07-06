@@ -290,3 +290,88 @@ footer img {
 /* ------------------------------------------------
                     REVEIL
 --------------------------------------------------- */
+
+#reveil {
+    margin: auto;
+    font-family: clock;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+#selectReveil {
+    display: flex;
+    flex-direction: row;
+    height: 30px;
+}
+
+#selectReveil select {
+    border: 1px solid black;
+    border-radius: 5%;
+}
+
+#selectReveil p {
+    padding: 1%; 
+    margin: auto;
+}
+
+#reveil textarea {
+    margin-top: 5%;
+    height: 30px;
+    border: 1px solid black;
+    border-radius: 5%;
+}
+
+#reveil button {
+    margin-top: 5%;
+    background-color: transparent;
+    border: 1px solid black;
+    border-radius: 5%;
+}
+
+#listesReveil {
+    display: flex;
+    flex-direction: row;
+}
+
+#tocome {
+    width: 300px;
+    border-right: 1px solid black;
+}
+
+#passed {
+    width: 300px;
+    border-left: 1px solid black;
+}
+
+/* rajouter l'alarme */
+
+
+
+
+/* ------------------------------------------------
+                    CHRONO
+--------------------------------------------------- */
+
+#chrono {
+    margin: auto;
+    font-family: clock;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+#buttonsChrono {
+    display: flex;
+    flex-direction: row;
+}
+
+#chrono button {
+    margin-top: 5%;
+    margin-right: 5%;
+    background-color: transparent;
+    border: 1px solid black;
+    border-radius: 5%;
+}

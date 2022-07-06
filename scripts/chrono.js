@@ -26,7 +26,10 @@ var timePlus;
 buttonChrono.addEventListener('click', function(event){
     event.preventDefault();
 
-    if(button.dataset.switch == "on"){
+
+    if(buttonChrono.dataset.switch == "on"){
+
+        buttonChrono.innerHTML = "pause";
 
         if(timePaused !== undefined)
         {
@@ -45,10 +48,12 @@ buttonChrono.addEventListener('click', function(event){
         }
 
         timesRunning = setInterval(chronometer, 1000);
-        delete button.dataset.switch;
+        delete buttonChrono.dataset.switch;
     }
     else 
     {
+        buttonChrono.innerHTML = "go";
+
         clearInterval(timesRunning);
         
         let timePause = timeChrono[0].innerHTML;
@@ -63,7 +68,7 @@ buttonChrono.addEventListener('click', function(event){
 
         timePaused = parseInt(newHour + newMinute + newSecond);
         
-        button.dataset.switch = "on";
+        buttonChrono.dataset.switch = "on";
     }
 
 
@@ -110,7 +115,7 @@ buttonReset.addEventListener('click', function reset(event){
 
     buttonTour.removeEventListener('click', tour())
     
-    button.dataset.switch = "on";
+    buttonChrono.dataset.switch = "on";
 })
 
 })
