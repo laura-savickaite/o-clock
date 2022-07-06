@@ -49,14 +49,17 @@ function minuteur () {
 
     let button = document.getElementById('buttonMinuteur');
 
+
     var timesUp
     var timeBis 
 
     button.addEventListener('click', function(event){
+
         event.preventDefault();
 
-
         if(button.dataset.switch == "on"){
+
+            button.innerHTML = "stop"
 
             if (timeBis !== undefined){
                 var time = timeBis
@@ -82,6 +85,7 @@ function minuteur () {
         }
         else 
         {
+            button.innerHTML = "on"
 
             clearInterval(timesUp)
             
