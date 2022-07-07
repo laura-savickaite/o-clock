@@ -12,6 +12,10 @@ let numbersDiv = document.getElementById('numbersTimer');
 let heureInput = document.getElementById('hours');
 let minuteInput = document.getElementById('minutes');
 let secondsInput = document.getElementById('seconds');
+let popup = document.getElementsByClassName("popup");
+popup = popup[0];
+let popup_p = document.getElementById("popup-p");
+let popupButtton = document.getElementById("close-popup");
 
 
 // la fonction va limiter le nb d'input que l'on peut rentrer
@@ -132,6 +136,15 @@ function minuteur () {
                 clearInterval(timesUp)
                 let timesUpSound = new Audio('sounds/alarm.wav');
                 timesUpSound.play();
+
+                popup_p.innerText = "Time's up!";
+                popup.classList.add("open-popup")
+    
+                popupButtton.addEventListener("click", function(){
+                    popup.classList.remove("open-popup")
+                    timesUpSound.pause()
+
+                })
             }
             else 
             {

@@ -17,6 +17,11 @@
     <a href="reveil.php"><p>Réveil</p></a>    
 </nav>
 
+<div class="popup">
+    <span id="popup-p"></span>
+    <button type="button" id="close-popup">OK</button>
+</div>
+
 <div id= "reveil">
     <div id="selectReveil">
         <select name="hourSelect" id="hourSelect"></select>

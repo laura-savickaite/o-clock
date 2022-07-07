@@ -15,6 +15,10 @@ let buttonSubmit = document.getElementById("buttonReveil");
 let textarea = document.getElementById("nameReveil");
 let tocome = document.getElementById("tocome");
 let passed = document.getElementById("passed");
+let popup = document.getElementsByClassName("popup");
+popup = popup[0];
+let popup_p = document.getElementById("popup-p");
+let popupButtton = document.getElementById("close-popup");
 
 //pour les sélections d'heure/minutes
 
@@ -100,6 +104,14 @@ function clock()
 
             let timesUpSound = new Audio('sounds/alarm.wav');
             timesUpSound.play();
+
+            popup_p.innerText = alarme[1];
+            popup.classList.add("open-popup")
+
+            popupButtton.addEventListener("click", function(){
+                popup.classList.remove("open-popup")
+                timesUpSound.pause()
+            })
 
             var passedLi = document.createElement('li')
             passedLi.innerText = element;
