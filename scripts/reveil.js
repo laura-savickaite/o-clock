@@ -98,6 +98,9 @@ function clock()
         if(horlogeReveil == alarme[0]){
             alert(alarme[1]);
 
+            let timesUpSound = new Audio('sounds/alarm.wav');
+            timesUpSound.play();
+
             var passedLi = document.createElement('li')
             passedLi.innerText = element;
             passed.appendChild(passedLi);

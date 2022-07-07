@@ -1,3 +1,10 @@
+/* 
+- faire le responsive !!!!!!!!!!!!!!!!!! 
+- rajouter l'alarme
+- rajouter l'alert pour réveil et minuteur 
+*/
+
+
 /* ------------------------------------------------
                     Fonts
 --------------------------------------------------- */
@@ -58,6 +65,7 @@ html {
     padding: 0;
     margin: 0;
     width: 100%;
+    /* overflow-y: hidden; */
 }
 
 /* Set up the body */
@@ -109,6 +117,7 @@ a {
 }
 
 
+
 /* ------------------------------------------------
                     INDEX
 --------------------------------------------------- */
@@ -117,7 +126,6 @@ nav {
     display: flex;
     flex-direction: row;
     justify-content: space-around;
-    padding-right: 500px;
     border-bottom: 2px solid black;
     font-family: nav;
 }
@@ -127,7 +135,6 @@ nav a {
 }
 
 #main-index {
-    /* width: 1000px; */
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -144,16 +151,9 @@ nav a {
     justify-content: space-between;
 }
 
-
-#top {
-    display: flex;
-    flex-direction: row;
-}
-
 #text-main-section {
     display: flex;
     flex-direction: column;
-    padding: 100px 0;
 }
 
 #text-main-section h1 {
@@ -163,7 +163,7 @@ nav a {
 }
 
 #text-main-section p {
-    padding: 0 100px;
+    padding: 0 50px;
     line-height: 35px;
     text-align: justify;
     color: rgb(98, 98, 98);
@@ -183,8 +183,8 @@ nav a {
 }
 
 #bottom li {
-    padding-left: 80px;
-    font-size: 25px;
+    padding-left: 5%;
+    font-size: 20px;
     font-family: norm;
 }
 
@@ -198,30 +198,70 @@ nav a {
     border-right: 2px solid black;
 }
 
-#h1 {
-    font-size: 100px;
-    font-family: time;
-    letter-spacing: 10px;
-    transform: rotate(90deg);
-    position: absolute;
-    left: 1000px;
-    bottom: 190px;
-}
-
 footer {
     background-color: black;
-    /* margin-top: 120px; */
     height: 100px;
 }
 
 footer img {
     padding-top: 20px;
-    margin-left: 1300px;
+    margin-left: 85%;
 }
 
 
 
-/* faire le responsive !!!!!!!!!!!!!!!!!! */
+/* -----> responsive */
+@media (max-width: 820px) {
+    #bottom img {
+        display: none;
+    }
+
+    #top img {
+        margin: auto;
+    }
+
+    #h1 {
+        display: none;
+    }
+}
+
+
+@media (min-width: 820px) {
+
+    nav {
+        padding-right: 500px;
+    }
+
+    #h1 {
+        font-size: 100px;
+        font-family: time;
+        letter-spacing: 10px;
+        transform: rotate(90deg);
+        position: absolute;
+        left: 1000px;
+        bottom: 190px;
+    }
+
+    #text-main-section {
+        padding: 100px 0;
+    }
+
+    #top {
+        display: flex;
+        flex-direction: row;
+    }
+
+    #text-main-section p {
+        padding: 0 100px;
+    }
+
+    #bottom li {
+        padding-left: 80px;
+        font-size: 25px;
+    }
+
+}
+
 
 
 
@@ -258,12 +298,6 @@ footer img {
     justify-content: center;
 }
 
-#numbersTimer {
-    display: flex;
-    flex-direction: row;
-    height: 30px;
-}
-
 #numbersTimer input {
     border: 1px solid black;
     border-radius: 5%;
@@ -283,8 +317,22 @@ footer img {
 
 
 
+/* -----> responsive */
 
+@media (max-width: 820px) {
+    #numbersTimer{
+        display: flex;
+        flex-direction: column;
+    }
+}
 
+@media (min-width: 820px) {
+    #numbersTimer {
+        display: flex;
+        flex-direction: row;
+        height: 30px;
+    }
+}
 
 
 /* ------------------------------------------------
@@ -337,15 +385,42 @@ footer img {
 
 #tocome {
     width: 300px;
-    border-right: 1px solid black;
 }
 
 #passed {
     width: 300px;
-    border-left: 1px solid black;
 }
 
-/* rajouter l'alarme */
+
+
+/* -----> responsive */
+
+@media (max-width: 820px) {
+
+    #listesReveil {
+        display: flex;
+        flex-direction: column;
+    }
+
+    #tocome {
+        border-bottom: 1px solid black;
+    }
+
+}
+
+@media (min-width: 820px){
+
+    #tocome {
+        border-right: 1px solid black;
+    }
+    
+    #passed {
+        border-left: 1px solid black;
+    }
+
+}
+
+
 
 
 

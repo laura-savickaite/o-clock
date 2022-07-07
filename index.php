@@ -29,7 +29,7 @@
                 </p>            
             </div>
 
-            <img src="images/study.jpeg" height="400px">
+            <img src="images/study.jpeg" height="300px">
         </section>  
         <section id = "bottom">
             <img src="images/draw.jpeg" width="150px">
@@ -47,7 +47,7 @@
     <h1 id="h1">TIMELAPS</h1>
 </main>
 
-<div id="border"></div>
+<!-- <div id="border"></div> -->
 
 <footer>
     <a href="https://github.com/laura-savickaite/o-clock"><img src="images/github.png" width="50px"></a>
